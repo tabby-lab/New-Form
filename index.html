@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+</head>
+
+<body>
+
+    <h1>Page Title</h1>
+
+    <div class='description'>Page short description. This can be all kinds of stuff.</div>
+
+    <h1>What is your favorites?</h1>
+
+    <div class='short-bullets'>
+        <ul>
+            <li>Cat</li>  
+             <li>Dog</li>
+             <li>Bird</li>
+             <li>Fish</li>
+          </ul>
+    </div>
+
+    <div class='checkboxes-from-bullets'>
+        </div>
+        <button id="btn-submit">Submit</button>
+
+<script>
+const shortBulletsEl = document.getElementsByClassName('short-bullets')
+const checkboxesContainer = document.getElementsByClassName('checkboxes-from-bullets')[0]
+for (let index = 0; index < shortBulletsEl[0].children[0].children.length; index++) {
+    const liEl = shortBulletsEl[0].children[0].children[index]
+    const checkboxDiv = document.createElement('div')
+
+//    let topic=liEl.innerText.split(' ')[]
+    checkboxDiv.innerHTML=`
+    <input type="checkbox" name="choice" value="${liEl.innerText}" id="${liEl.innerText}"><label for="${liEl.innerText}">${liEl.innerText}</label>
+    `
+
+    checkboxesContainer.appendChild(checkboxDiv)
+}
+
+const selectAllCheckboxDiv = document.createElement('div')
+selectAllCheckboxDiv.innerHTML=`
+    <input type="checkbox" name="all" value="all" id="all"><label for="all">all</label>
+    `
+    function selectAll(){
+        if (!this.checked){
+            return;
+        }
+        let checkboxes = document.querySelectorAll('input[name=choice]')
+        for (let index = 0; index <checkboxes.length; index++) {
+            const checkbox =checkboxes[index];
+            checkbox.checked = true;
+        }
+        // console.log(checkboxes)
+    }
+    checkboxesContainer.appendChild(selectAllCheckboxDiv)
+    let selectAllCheckbox = document.getElementById('all')
+    selectAllCheckbox.addEventListener("change", selectAll)
+
+    const btnFood = document.querySelector('#btn-submit');
+        btnFood.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="choice"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        }); 
+
+
+</script>
+
+    
+
+
+    
+<!-- 
+    <p>Your favorite color:</p>
+    <label for="c1"> <input type="checkbox" name="color" value="red" id="c1">Red</label>
+    <label for="c2"><input type="checkbox" name="color" value="green" id="c2"> Green</label>
+    <label for="c3"><input type="checkbox" name="color" value="blue" id="c3">Blue</label>
+    <p>
+        <button id="btn-color">Submit color</button>
+    </p>
+
+    <p>Your favorite animal:</p>
+    <label for="a4"> <input type="checkbox" name="animal" value="cat" id="a4">Cat</label>
+    <label for="a5"><input type="checkbox" name="animal" value="dog" id="a5">Dog</label>
+    <label for="a6"><input type="checkbox" name="animal" value="bird" id="a6">Bird</label>
+    <p>
+        <button id="btn-animal">Submit animal</button>
+    </p>
+
+    <p>Your favorite food:</p>
+    <label for="f7"> <input type="checkbox" name="food" value="tacos" id="f7">Tacos</label>
+    <label for="f8"><input type="checkbox" name="food" value="pizza" id="f8">Pizza</label>
+    <label for="f9"><input type="checkbox" name="food" value="burger" id="f9">Burger</label>
+    <p>
+        <button id="btn-food">Submit food</button>
+    </p>
+
+    <script>
+        const btnColor = document.querySelector('#btn-color');
+        btnColor.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="color"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        });    
+
+        const btnAnimal = document.querySelector('#btn-animal');
+        btnAnimal.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="animal"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        });   
+        
+        const btnFood = document.querySelector('#btn-food');
+        btnFood.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="food"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        }); 
+
+
+    </script> -->
+
+</body>
+
+</html>

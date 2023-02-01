@@ -1,0 +1,18 @@
+<h1>Page Title</h1>
+
+<div class='description'>Page short description. This can be all kinds of stuff.</div>
+
+<div class='short-bullets'>
+Question 1
+Question 2
+Question 3
+</div>
+<div class='checkboxes-from-bullets'>
+
+[Find the correct div and Iterate through
+ the bullets to generate checkbox inputs]
+[Add an 'All of the Above' checkbox 
+input that selects ALL of the inputs]
+[Submission data should show values
+ from the selected bullets]
+</div>
